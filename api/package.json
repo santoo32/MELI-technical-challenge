@@ -6,10 +6,7 @@
   "scripts": {
     "test": "NODE_ENV=test mocha --reporter mochawesome --reporter-options reportDir=tests/output,reportFilename=index --exit 'tests/**/*.spec.js' --timeout 10000",
     "start": "NODE_ENV=production node ./index.js",
-    "development": "./node_modules/.bin/nodemon --inspect=0.0.0.0 ./index.js",
-    "pre-test": "eslint --fix --ignore-path .eslintignore --ext js .",
-    "heroku-postbuild": "cd client && npm install && npm run build",
-    "qr": "node qr.js"
+    "development": "./node_modules/.bin/nodemon --inspect=0.0.0.0 ./index.js"
   },
   "author": "Santiago Roa",
   "license": "ISC",
