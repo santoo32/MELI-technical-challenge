@@ -12,8 +12,17 @@ router.route("/:id").get(function (req, res) {
         response.getResponse(res);
         return;
       } else {
-        response.setData(result);
-        response.getResponse(res);
+        ItemsQ.findDescription(req.params.id, function(dError, dResult){
+          if (dError) {
+            response.setError(dError);
+            response.getResponse(res);
+            return;
+          }else{
+            result.description = dResult
+            response.setData(result);
+            response.getResponse(res);
+          }
+        })
       }
     });
   } catch (err) {
