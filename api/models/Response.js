@@ -2,13 +2,15 @@ class Response {
   constructor() {
     this.hasError = false;
     this.payload = {
-      data: {},
-      error: {}
-    }
+      author: {
+        'name': "Santiago",
+        'lastname': "Roa"
+      }
+      }
   }
 
   setData(data) {
-    this.payload.data = data;
+    this.payload.item = data;
   }
 
   setError(err) {
@@ -34,10 +36,7 @@ class Response {
   }
 
   getResponse(res) {
-    if (!this.payload.error.message && !this.hasError)
-      return res.json(this.payload);
-    else
-      return res.status(400).json(this.payload);
+    return res.json(this.payload);
   }
 }
 
