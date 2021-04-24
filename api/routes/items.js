@@ -22,11 +22,23 @@ router.route("/:id").get(function (req, res) {
   }
 });
 
-// router.route("/create2").get(function (req, res) {
-//   let response = new Response();
-//   response.setData({ asd: "asd" });
-//   response.getResponse(res);
-//   console.log("asd");
-// });
+router.route("/").get(function (req, res) {
+  let response = new Response();
+  try {
+    ItemsQ.findItems(req.query.q, function (err, result) {
+      if (err) {
+        response.setError(err);
+        response.getResponse(res);
+        return;
+      } else {
+        response.setData(result);
+        response.getResponse(res);
+      }
+    });
+  } catch (err) {
+    response.setError(err);
+    response.getResponse(res);
+  }
+});
 
 module.exports = router;
