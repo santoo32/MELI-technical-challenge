@@ -9,7 +9,6 @@ function findItemById(id, callback) {
     function (err, res, resBody) {
       parsedResBody = JSON.parse(resBody);
       if (parsedResBody.error) {
-        console.log(parsedResBody)
         callback(parsedResBody);
       } else {
         callback(null, {
@@ -38,7 +37,7 @@ function findItems(query, callback) {
         uri: url + "sites/MLA/search?q=​" + query,
       },
       function (err, res, resBody) {
-          console.log(resBody)
+        console.log(resBody)
         parsedResBody = JSON.parse(resBody);
         if (parsedResBody.error) {
           callback(parsedResBody);

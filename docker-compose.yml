@@ -1,19 +1,38 @@
 version: '3'
 services:
   api:
-    image: backend
-    build: .
-    networks:
-      - backend
+    container_name: ML-API
+    image: node:10
+    working_dir: /home/node/app
+    volumes:
+      - ./api:/home/node/app
     ports:
-      - "3000:3000"
+      - "9000:9000"
+    environment:
+        - "NODE_ENV:development"
+    command: npm run development
+  
+  # webapp:
+  #   container_name: ML-WebApp
+  #   image: node:10-alpine
+  #   working_dir: /home/node/app
+  #   volumes:
+  #     - ./webapp:/home/node/app
+  #   ports:
+  #     - 3000:3000
+  #   command: yarn start
+  #   stdin_open: true
+  #   environment:
+  #     - WDS_SOCKET_HOST=localhost
+  #     - WDS_SOCKET_PORT=3000
+  #     - NODE_ENV=development
 
-  web-cli:
-    image: sample-express-app
-    networks:
-      - backend
-    command: sh
+#   web-cli:
+#     image: sample-express-app
+#     networks:
+#       - backend
+#     command: sh
 
-networks:
-  backend:
-    driver: bridge
+# networks:
+#   backend:
+#     driver: bridge
