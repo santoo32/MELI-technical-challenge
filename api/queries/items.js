@@ -12,16 +12,7 @@ function findItemById(id, callback) {
         callback(parsedResBody);
       } else {
         callback(null, {
-          id: parsedResBody.id,
-          title: parsedResBody.title,
-          price: {
-            currency: parsedResBody.currency_id,
-            amount: parsedResBody.price,
-            decimals: 0,
-          },
-          picture: parsedResBody.pictures[0].url,
-          condition: parsedResBody.condition,
-          free_shipping: parsedResBody.shipping.free_shipping,
+          ...parseItem(parsedResBody),
           sold_quantity: parsedResBody.sold_quantity,
           description: parsedResBody.descriptions.id,
         });
@@ -31,37 +22,41 @@ function findItemById(id, callback) {
 }
 
 function findItems(query, callback) {
-    var url = process.env.API_URL;
-    request.get(
-      {
-        uri: url + "sites/MLA/search?q=​" + query,
-      },
-      function (err, res, resBody) {
-        console.log(resBody)
-        parsedResBody = JSON.parse(resBody);
-        if (parsedResBody.error) {
-          callback(parsedResBody);
-        } else {
-        //   callback(null, {
-        //     id: parsedResBody.id,
-        //     title: parsedResBody.title,
-        //     price: {
-        //       currency: parsedResBody.currency_id,
-        //       amount: parsedResBody.price,
-        //       decimals: 0,
-        //     },
-        //     picture: parsedResBody.pictures[0].url,
-        //     condition: parsedResBody.condition,
-        //     free_shipping: parsedResBody.shipping.free_shipping,
-        //     sold_quantity: parsedResBody.sold_quantity,
-        //     description: parsedResBody.descriptions.id,
-        //   });
-        callback(null, parsedResBody)
-        }
+  var url = process.env.API_URL;
+  request.get(
+    { url: url + "sites/MLA/search?", qs: { q: query } },
+    function (err, res, resBody) {
+      parsedResBody = JSON.parse(resBody);
+      if (parsedResBody.error) {
+        callback(parsedResBody);
+      } else {
+        callback(
+          null,
+          parsedResBody.results.map((item) => {
+            return parseItem(item);
+          })
+        );
       }
-    );
-  }
+    }
+  );
+}
+
+function parseItem(item) {
+  return {
+    id: item.id,
+    title: item.title,
+    price: {
+      currency: item.currency_id,
+      amount: item.price,
+      decimals: 0,
+    },
+    condition: item.condition,
+    free_shipping: item.shipping.free_shipping,
+    picture: item.pictures ? item.pictures[0].url : item.thumbnail,
+  };
+}
 
 module.exports = {
   findItemById,
+  findItems,
 };
