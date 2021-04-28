@@ -65,7 +65,6 @@ function findDescription(itemId, callback){
       if (parsedResBody.error) {
         callback(parsedResBody);
       } else {
-        console.log(parsedResBody.plain_text)
         callback(null, parsedResBody.plain_text);
       }
     }
