@@ -3,7 +3,9 @@ import searchIcon from "../../assets/ic_Search.png";
 import "./searchBox.scss";
 
 // Take in a component which will wrap the search box
-export default function withSearchBox(WrapperComponent, placeholder) {
+//The keyword variable is assigned to the value of the input meanwhile 
+//the setKeyword variable is assigned as a function to handle the change event of the input
+export default function withSearchBox(WrapperComponent, placeholder, keyword, setKeyword) {
   // And return the composed component
   class SearchBoxHOC extends React.Component {
     render() {
@@ -20,8 +22,8 @@ export default function withSearchBox(WrapperComponent, placeholder) {
                   id="search-input"
                   type="text"
                   placeholder={placeholder}
-                  onChange={this.handleInputChange}
-                  //value={this.state.search}
+                  onChange={(e) => setKeyword(e.target.value)}
+                  value={keyword}
                 />
                 <button className="search-icon-container" type="submit">
                   <img className="search-icon" alt="Buscar" src={searchIcon} />

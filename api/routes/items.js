@@ -8,7 +8,7 @@ router.route("/:id").get(function (req, res) {
   try {
     ItemsQ.findItemById(req.params.id, function (err, result) {
       if (err) {
-        response.setError(err);
+        response.setError(err.error);
         response.getResponse(res);
         return;
       } else {

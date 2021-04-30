@@ -18,6 +18,5 @@ export function getItems(query) {
 export function getItem(id) {
   return axios.get(
     `${config.apiURL}/items/${id}`
-    //interceptor
   );
 }
