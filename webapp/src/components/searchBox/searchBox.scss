@@ -1,5 +1,9 @@
 @import '../../assets/scss/variables.scss';
 
+.page-container {
+  //display: inline-block;
+  flex-grow: 1;
+}
 .search-input-container {
   display: inline-flex;
   height: 39px;

@@ -3,12 +3,10 @@ import searchIcon from "../../assets/ic_Search.png";
 import "./searchBox.scss";
 
 // Take in a component which will wrap the search box
-export default function withSearchBox(WrapperComponent) {
+export default function withSearchBox(WrapperComponent, placeholder) {
   // And return the composed component
   class SearchBoxHOC extends React.Component {
     render() {
-      const { placeholder } = this.props;
-
       return (
         <WrapperComponent
           child={
