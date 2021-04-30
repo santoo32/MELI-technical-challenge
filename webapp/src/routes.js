@@ -5,17 +5,14 @@ import {
   Switch,
 } from 'react-router-dom';
 
-// import ProductDetails from './components/productDetails/productDetails';
-import SearchBox from './components/searchBox/searchBox';
-// import SearchResults from './components/searchResults/searchResults';
-import NotFoundPage from './views/404page/404page';
+import SearchView from './views/searchView/searchView'
 import ProductDetails from './views/productDetails/productDetails';
+import NotFoundPage from './views/404page/404page';
 
 const Routes = () => 
 
     <Switch>
-      <Route exact path='/' component={SearchBox} />
-      {/* <Route exact path='/items' component={SearchResults} /> */}
+      <Route exact path='/' component={SearchView} />
       <Route path='/items/:id' component={ProductDetails} />
       <Route component={NotFoundPage} />
     </Switch>
