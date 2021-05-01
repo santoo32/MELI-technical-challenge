@@ -9,9 +9,9 @@ class NavBar extends Component {
   render() {
     return (
       <div className="search-box-container">
-        {/* <Link to="/"> */}
+        <Link to="/">
         <img className="mercado-libre-logo" alt="Mercado Libre" src={logoML} />
-        {/* </Link> */}
+        </Link>
         {this.props.child}
       </div>
     );
