@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import NavBar from "./components/navBar/navBar";
 import withSearchBox from "./components/searchBox/searchBox";
+import SearchView from "./views/searchView/searchView";
 const NavBarWithSearchBox = withSearchBox(
   NavBar, 
   "Nunca dejes de buscar");
@@ -17,8 +18,9 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <NavBarWithSearchBox></NavBarWithSearchBox>
-          <Routes />
+          {/* <NavBarWithSearchBox></NavBarWithSearchBox>
+          <Routes /> */}
+          <SearchView></SearchView>
         </Router>
       </div>
     );
