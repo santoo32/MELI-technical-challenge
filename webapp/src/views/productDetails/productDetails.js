@@ -42,6 +42,7 @@ class ProductDetails extends React.Component {
         <div>
         <h1>{product.title}</h1>
         <img src={product.picture}></img>
+        <h3>{product.description}</h3>
         </div>
     );
   }
