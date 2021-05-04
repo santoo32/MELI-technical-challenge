@@ -37,7 +37,6 @@ class ProductDetails extends React.Component {
   render() {
     const { product } = this.state;
     const { price } = product;
-    console.log(price)
     return (
       <div className="product-detail-page">
         <div className="product-detail-top">

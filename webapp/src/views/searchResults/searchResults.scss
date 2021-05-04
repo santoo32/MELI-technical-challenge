@@ -9,13 +9,14 @@
   margin-top: 32px;
   margin-left: 32px;
   margin-right: 32px;
+  text-decoration: none;
 
   .product-item {
     margin: 16px 16px 0 16px;
     display: flex;
     flex-direction: column;
     text-decoration: none;                 /* Sin decoración */
-
+    color: $black;
 
     .image-container {
       display: flex;
@@ -74,6 +75,7 @@
 
       .item-title {
         font-size: 14px;
+        text-decoration: none;
 
         a {
           color: $gray-950;
@@ -171,7 +173,7 @@
   @media (min-width: 400px) {
     .product-item {
       flex-direction: row;
-
+      
       .image-container {
         justify-content: flex-start;
         width: max-content;

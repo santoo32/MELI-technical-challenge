@@ -1,8 +1,6 @@
 import axios from "axios";
 import { config } from "../environments/environment.dev.js";
 
-//import { interceptor } from "./requestInterceptor";
-
 export function getItems(query) {
   return axios.get(
     `${config.apiURL}/items/`,
@@ -11,7 +9,6 @@ export function getItems(query) {
              q: query
          }
      }
-    //interceptor
   );
 }
 

@@ -2,6 +2,12 @@ const request = require("request");
 
 var url = process.env.API_URL;
 
+const CONDITION_MAPPER = {
+  'new': 'Nuevo',
+  'used': 'Usado',
+  'not_specified': 'No especificado',
+}
+
 function findItemById(id, callback) {
   request.get(
     {
@@ -50,7 +56,7 @@ function parseItem(item) {
       amount: item.price,
       decimals: 0,
     },
-    condition: item.condition,
+    condition: CONDITION_MAPPER[item.condition],
     free_shipping: item.shipping.free_shipping,
     picture: item.pictures ? item.pictures[0].url : item.thumbnail
   };
@@ -63,8 +69,9 @@ function findDescription(itemId, callback){
     },
     function (err, res, resBody) {
       parsedResBody = JSON.parse(resBody);
+      console.log(parsedResBody)
       if (parsedResBody.error) {
-        callback(parsedResBody);
+        callback(null , parsedResBody.message);
       } else {
         callback(null, parsedResBody.plain_text);
       }
