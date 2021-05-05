@@ -9,7 +9,8 @@ class Response {
   }
 
   setData(data) {
-    this.payload.item = data;
+    data.items ? this.payload.item = data.items : this.payload = data;
+    data.categories ? this.payload.categories = data.categories : null;
   }
 
   setError(err) {
