@@ -32,15 +32,19 @@ function findItems(query, callback) {
     { url: url + "sites/MLA/search?", qs: { q: query } },
     function (err, res, resBody) {
       parsedResBody = JSON.parse(resBody);
-      
+      const categoriesResult = parsedResBody.filters.find(f => f.name === 'Categorías');
+      const filtered = categoriesResult ? categoriesResult.values[0].path_from_root : [];
+
       if (parsedResBody.error) {
         callback(parsedResBody);
       } else {
         callback(
           null,
-          parsedResBody.results.map((item) => {
+          {
+            categories: filtered,
+            items:parsedResBody.results.map((item) => {
             return {...parseItem(item), address: item.address.state_name};
-          })
+          })}
         );
       }
     }
@@ -69,7 +73,6 @@ function findDescription(itemId, callback){
     },
     function (err, res, resBody) {
       parsedResBody = JSON.parse(resBody);
-      console.log(parsedResBody)
       if (parsedResBody.error) {
         callback(null , parsedResBody.message);
       } else {

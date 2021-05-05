@@ -1,0 +1,29 @@
+@import "./../../assets/scss/variables.scss";
+
+.breadcrumb-container {
+  display: flex;
+  font-size: 14px;
+  color: $gray-500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  ul.breadcrumb {
+    list-style: none;
+    background-color: #eee;
+  }
+
+  /* Display list items side by side */
+  ul.breadcrumb li {
+    display: inline;
+  }
+
+  .last-item {
+    font-weight: bold;
+  }
+
+  /* Add a slash symbol (/) before/behind each list item */
+  ul.breadcrumb li + li:before {
+    padding: 8px;
+    content: ">\00a0";
+  }
+}
