@@ -3,6 +3,7 @@ import { getItem } from "../../services/itemService";
 import { formatCurrency } from "../../components/common/priceFormatter";
 import "./productDetails.scss";
 import "../searchResults/searchResults.scss";
+import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs";
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class ProductDetails extends React.Component {
       history.push("/");
     } else {
       getItem(match.params.id)
-        .then(({data}) => {
+        .then(({ data }) => {
           if (data.err) {
             //Product is not found
             history.push("/");
@@ -38,8 +39,10 @@ class ProductDetails extends React.Component {
     const { product } = this.state;
 
     return (
-      <div className="product-detail-page">
-        {product && (
+      product && (
+      <div>
+        <Breadcrumbs categories={product.category}></Breadcrumbs>
+        <div className="product-detail-page">
           <div>
             <div className="product-detail-top">
               {/* <div className="image-container"> */}
@@ -67,8 +70,9 @@ class ProductDetails extends React.Component {
               </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
+      )
     );
   }
 }
