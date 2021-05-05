@@ -20,7 +20,8 @@ function findItemById(id, callback) {
       } else {
         callback(null, {
           ...parseItem(parsedResBody),
-          sold_quantity: parsedResBody.sold_quantity
+          sold_quantity: parsedResBody.sold_quantity, 
+          category: parsedResBody.category_id
         });
       }
     }
@@ -32,8 +33,8 @@ function findItems(query, callback) {
     { url: url + "sites/MLA/search?", qs: { q: query } },
     function (err, res, resBody) {
       parsedResBody = JSON.parse(resBody);
-      const categoriesResult = parsedResBody.filters.find(f => f.name === 'Categorías');
-      const filtered = categoriesResult ? categoriesResult.values[0].path_from_root : [];
+      const categoriesResultFilters = parsedResBody.filters.find(f => f.name === 'Categorías');
+      const filtered = categoriesResultFilters ? categoriesResultFilters.values[0].path_from_root : [];
 
       if (parsedResBody.error) {
         callback(parsedResBody);
@@ -82,8 +83,25 @@ function findDescription(itemId, callback){
   );
 }
 
+function findCategory(catId, callback){
+  request.get(
+    {
+      uri: url + "categories/" + catId,
+    },
+    function (err, res, resBody) {
+      parsedResBody = JSON.parse(resBody);
+      if (parsedResBody.error) {
+        callback(null , parsedResBody.message);
+      } else {
+        callback(null, parsedResBody.path_from_root);
+      }
+    }
+  );
+}
+
 module.exports = {
   findItemById,
   findItems,
-  findDescription
+  findDescription,
+  findCategory
 };
