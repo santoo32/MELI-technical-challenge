@@ -18,9 +18,18 @@ router.route("/:id").get(function (req, res) {
             response.getResponse(res);
             return;
           }else{
-            result.description = dResult
-            response.setData(result);
-            response.getResponse(res);
+            ItemsQ.findCategory(result.category, function(cError, cResult){
+              if(cError) {
+                response.setError(cError);
+                response.getResponse(res);
+                return;
+              } else {
+                result.category = cResult;
+                result.description = dResult
+                response.setData(result);
+                response.getResponse(res);
+              }
+            })
           }
         })
       }

@@ -38,29 +38,40 @@ class ProductDetails extends React.Component {
     const { product } = this.state;
     const { price } = product;
     return (
-      <div className="product-detail-page">
-        <div className="product-detail-top">
-          {/* <div className="image-container"> */}
-          <img className="image-container" src={product.picture}></img>
-          {/* </div> */}
-          <div className="product-detail-actions">
-            <div className="product-condition">
-              {product.condition} - {product.sold_quantity} vendidos
+      product && (
+      <section>
+        <Breadcrumbs categories={product.category}></Breadcrumbs>
+        <div className="product-detail-page">
+          <content>
+            <div className="product-detail-top">
+              {/* <div className="image-container"> */}
+              <img className="image-container" alt={product.title} src={product.picture}></img>
+              {/* </div> */}
+              <div className="product-detail-actions">
+                <div className="product-condition">
+                  {product.condition} - {product.sold_quantity} vendidos
+                </div>
+                <h1 className="product-title">{product.title}</h1>
+                <span className="item-price">
+                  {formatCurrency(
+                    product.price.amount,
+                    product.price.currency,
+                    "es-AR"
+                  )}
+                </span>
+                <button className="buy-button" aria-label="Comprar">Comprar</button>
+              </div>
             </div>
-            <h1 className="product-title">{product.title}</h1>
-            <span className="item-price">
-            {price ? formatCurrency(price.amount, price.currency, 'es-AR') : null}
-            </span>
-            <button className="buy-button">Comprar</button>
-          </div>
+            <div className="product-detail-bottom">
+              <p>Descripcion del producto</p>
+              <div className="product-description">
+                <p>{product.description}</p>
+              </div>
+            </div>
+          </content>
         </div>
-        <div className="product-detail-bottom">
-          <h3>Descripcion del producto:</h3>
-          <div className="product-description">
-            <p>{product.description}</p>
-          </div>
-        </div>
-      </div>
+      </section>
+      )
     );
   }
 }

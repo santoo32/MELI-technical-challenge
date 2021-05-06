@@ -23,24 +23,42 @@ const SearchResults = ({ itemsList = [] }) => {
 
   return (
     <>
-      <div className="products-list">
-        {results.map((item) => {
-          return (
-            <Link to={`/items/${item.id}`} className="product-item" key={item.id}>
-              <div className="image-container">
-                <img
-                  className="product-image"
-                  alt={item.title}
-                  src={item.picture}
-                />
-              </div>
-              <div className="item-details">
-                <div className="top-section">
-                  <div className="item-price-block">
-                    <div className="item-price">
-                      <span className="price">
-                        {formatCurrency(item.price.amount, item.price.currency, 'es-AR')}
-                      </span>
+      <section>
+        <Breadcrumbs categories={categories}></Breadcrumbs>
+        <div className="products-list">
+          {results.map((item) => {
+            return (
+              <Link
+                to={`/items/${item.id}`}
+                className="product-item"
+                key={item.id}
+              >
+                <div className="image-container">
+                  <img
+                    className="product-image"
+                    alt={item.title}
+                    src={item.picture}
+                  />
+                </div>
+                <div className="item-details">
+                  <div className="top-section">
+                    <div className="item-price-block">
+                      <div className="item-price">
+                        <span className="price">
+                          {formatCurrency(
+                            item.price.amount,
+                            item.price.currency,
+                            "es-AR"
+                          )}
+                        </span>
+                      </div>
+                      {item.free_shipping && (
+                        <img
+                          className="free-shipping-icon"
+                          alt="Envío gratis"
+                          src={logoFreeShipp}
+                        />
+                      )}
                     </div>
                     {item.free_shipping && (
                       <img
@@ -55,11 +73,11 @@ const SearchResults = ({ itemsList = [] }) => {
                 <div className="item-title">
                   {item.title}
                 </div>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
     </>
   );
 };
