@@ -6,25 +6,29 @@ import { getItems } from "../../services/itemService";
 import { Link } from "react-router-dom";
 import { formatCurrency } from "../../components/common/priceFormatter";
 import logoFreeShipp from "../../assets/ic_shipping.png";
+import NoResults from "../noResults/noResults";
  
 
 //The main role of this component is just to render all of the items
 // that are passed into it via props.
 const SearchResults = ({ itemsList = [] }) => {
   const [results, setResults] = useState([]);
+  const [hasFinished, sethasFinished] = useState(false);
+
   const { search } = useLocation();
   const values = queryString.parse(search);
 
   useEffect(() => {
     getItems(values.search).then(({ data }) => {
       setResults(data.item);
+      sethasFinished(true);
     });
   }, [values.search]);
 
   return (
     <>
       <div className="products-list">
-        {results.map((item) => {
+        {results.length > 0 ? results.map((item) => {
           return (
             <Link to={`/items/${item.id}`} className="product-item" key={item.id}>
               <div className="image-container">
@@ -58,7 +62,7 @@ const SearchResults = ({ itemsList = [] }) => {
               </div>
             </Link>
           );
-        })}
+        }) : hasFinished ? <NoResults></NoResults> : null}
       </div>
     </>
   );
