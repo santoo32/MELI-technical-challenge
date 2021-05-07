@@ -7,12 +7,16 @@ import { Link } from "react-router-dom";
 import { formatCurrency } from "../../components/common/priceFormatter";
 import logoFreeShipp from "../../assets/ic_shipping.png";
 import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs";
+import NoResults from "../noResults/noResults";
+ 
 
 //The main role of this component is just to render all of the items
 // that are passed into it via props.
 const SearchResults = ({ itemsList = [] }) => {
   const [results, setResults] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [hasFinished, sethasFinished] = useState(false);
+
   const { search } = useLocation();
   const values = queryString.parse(search);
 
@@ -20,6 +24,7 @@ const SearchResults = ({ itemsList = [] }) => {
     getItems(values.search).then(({ data }) => {
       setResults(data.item);
       setCategories(data.categories);
+      sethasFinished(true);
     });
   }, [values.search]);
 
@@ -28,7 +33,7 @@ const SearchResults = ({ itemsList = [] }) => {
       <div>
         <Breadcrumbs categories={categories}></Breadcrumbs>
         <div className="products-list">
-          {results.map((item) => {
+          {results.length > 0 ? results.map((item) => {
             return (
               <Link
                 to={`/items/${item.id}`}
@@ -66,10 +71,10 @@ const SearchResults = ({ itemsList = [] }) => {
                   </div>
                   <div className="item-title">{item.title}</div>
                 </div>
-              </Link>
-            );
-          })}
-        </div>
+            </Link>
+          );
+        }) : hasFinished ? <NoResults></NoResults> : null}
+      </div>
       </div>
     </>
   );
