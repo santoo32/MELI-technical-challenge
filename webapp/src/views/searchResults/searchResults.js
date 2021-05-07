@@ -30,7 +30,7 @@ const SearchResults = ({ itemsList = [] }) => {
 
   return (
     <>
-      <div>
+      <section>
         <Breadcrumbs categories={categories}></Breadcrumbs>
         <div className="products-list">
           {results.length > 0 ? results.map((item) => {
@@ -75,7 +75,7 @@ const SearchResults = ({ itemsList = [] }) => {
           );
         }) : hasFinished ? <NoResults></NoResults> : null}
       </div>
-      </div>
+      </section>
     </>
   );
 };

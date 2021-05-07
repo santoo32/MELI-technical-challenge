@@ -23,10 +23,14 @@ const SearchBox = ({ keyword, setKeyword, placeholder, search }) => {
         placeholder={placeholder}
         onChange={(e) => setKeyword(e.target.value)}
         onKeyDown={handleKeyDown}
+        aria-label="producto a buscar"
+        //tabindex='1'
       />
       <button 
         className="search-icon-container" 
         onClick={search}
+        aria-label="search"
+        //tabindex='2'
         >
         <img className="search-icon" alt="Buscar" src={searchIcon} />
       </button>

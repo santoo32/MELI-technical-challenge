@@ -40,13 +40,13 @@ class ProductDetails extends React.Component {
 
     return (
       product && (
-      <div>
+      <section>
         <Breadcrumbs categories={product.category}></Breadcrumbs>
         <div className="product-detail-page">
-          <div>
+          <content>
             <div className="product-detail-top">
               {/* <div className="image-container"> */}
-              <img className="image-container" src={product.picture}></img>
+              <img className="image-container" alt={product.title} src={product.picture}></img>
               {/* </div> */}
               <div className="product-detail-actions">
                 <div className="product-condition">
@@ -60,18 +60,18 @@ class ProductDetails extends React.Component {
                     "es-AR"
                   )}
                 </span>
-                <button className="buy-button">Comprar</button>
+                <button className="buy-button" aria-label="Comprar">Comprar</button>
               </div>
             </div>
             <div className="product-detail-bottom">
-              <h3>Descripcion del producto:</h3>
+              <p>Descripcion del producto</p>
               <div className="product-description">
                 <p>{product.description}</p>
               </div>
             </div>
-          </div>
+          </content>
         </div>
-      </div>
+      </section>
       )
     );
   }

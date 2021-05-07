@@ -11,7 +11,7 @@ class NavBar extends Component {
     return (
       <div className="search-box-container">
         <Link to="/">
-        <img className="mercado-libre-logo" alt="Mercado Libre" src={logoML} />
+        <img className="mercado-libre-logo" alt="Mercado libre" aria-label="Home page" src={logoML} />
         </Link>
         <SearchBox 
           keyword={this.props.keyword} 

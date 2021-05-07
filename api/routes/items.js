@@ -24,7 +24,6 @@ router.route("/:id").get(function (req, res) {
                 response.getResponse(res);
                 return;
               } else {
-                console.log(cResult);
                 result.category = cResult;
                 result.description = dResult
                 response.setData(result);

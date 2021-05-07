@@ -21,7 +21,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <main>
         <Router>
           <SearchView
             itemsListUpdater={this.itemsListUpdater}
@@ -30,7 +30,7 @@ class App extends Component {
             itemsList={this.state.itemsList}
           ></Routes>
         </Router>
-      </div>
+      </main>
     );
   }
 }
