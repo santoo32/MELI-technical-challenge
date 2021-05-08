@@ -3,7 +3,7 @@ export function formatCurrency(number, currency, country){
         country, {
         style: 'currency',
         currency: currency,
-        minimumFractionDigits: 2
+        minimumFractionDigits: 0
     });
 
     return formatter.format(number);

@@ -1,4 +1,4 @@
-@import '../../assets/scss/variables.scss';
+@import "../../assets/scss/variables.scss";
 
 .product-detail-page {
   display: flex;
@@ -10,11 +10,12 @@
   margin-right: 32px;
   margin-bottom: 32px;
 
-  .product-detail-top{
+  .product-detail-top {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-around;
+    padding-left: 32px;
     padding-right: 32px;
 
     .image-container {
@@ -25,16 +26,16 @@
       justify-content: space-around;
     }
 
-    .product-detail-actions{
+    .product-detail-actions {
       padding-top: 32px;
       display: flex;
       justify-content: flex-start;
       flex-direction: column;
-      
-      .product-condition{
+
+      .product-condition {
         font-size: 14px;
       }
-      
+
       .buy-button {
         width: 100%;
         border: none;
@@ -50,11 +51,11 @@
 
         &:hover {
           background-color: $light-blue-hover;
-          transition: .25s;
+          transition: 0.25s;
         }
       }
 
-      .product-title{
+      .product-title {
         font-size: 24px;
       }
 
@@ -65,22 +66,28 @@
         align-items: flex-start;
         margin-top: 32px;
         margin-bottom: 32px;
+
+        .item-price-decimals {
+          font-size: 25px;
+          line-height: 40px;
+        }
       }
     }
   }
 
-  .product-detail-bottom{
+  .product-detail-bottom {
     flex-direction: row;
     padding-left: 32px;
     padding-right: 32px;
     padding-bottom: 32px;
+    padding-top: 32px;
     font-size: 28px;
 
-    p{
+    p {
       margin: 0px;
     }
 
-    .product-description *{
+    .product-description * {
       padding-top: 32px;
       font-size: 16px;
       color: $gray-500;
@@ -88,51 +95,113 @@
     }
   }
 
-
-
-  @media (max-width: 768px) {
+  //Iphone X
+  @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (-webkit-device-pixel-ratio: 3) { 
     .product-detail-top {
-     flex-direction: column;
-     align-items: center;
-     padding-left: 20px;
-     padding-right: 20px;
-     
-     .image-container{
-      width: 180px;
-      height: 180px;
-     }
+      flex-direction: column;
+      align-items: center;
+      padding-left: 20px;
+      padding-right: 20px;
 
-     .product-detail-actions{
-       font-size: 36px;
-     }
+      .image-container {
+        width: 500px;
+        height: 500px;
+      }
+
+      .product-detail-actions {
+        font-size: 36px;
+      }
     }
 
-    .product-detail-bottom{
+    .product-detail-bottom {
       font-size: 20px;
     }
   }
 
-  @media only screen 
-    and (max-width : 812px) 
-    and (orientation : landscape)  { 
+  @media (max-width: 768px) {
+    .product-detail-top {
+      flex-direction: column;
+      align-items: center;
+      padding-left: 20px;
+      padding-right: 20px;
+      
+      .image-container {
+        width: 180px;
+        height: 180px;
+      }
 
-      .product-detail-top {
-        //flex-direction: column;
-        align-items: center;
-   
-        .image-container{
-         width: 300px;
-         height: 300px;
-        }
-   
-        .product-detail-actions{
-          font-size: 36px;
-          //padding-left: 32px;
-        }
-       }
-   
-       .product-detail-bottom{
-         font-size: 20px;
-       }
+      .product-detail-actions {
+        font-size: 36px;
+      }
     }
+
+    .product-detail-bottom {
+      font-size: 20px;
+    }
+  }
+
+  //Ipad in portrait orientation
+  @media (max-width: 768px) and (orientation : portrait){
+    .product-detail-top {
+      flex-direction: column;
+      align-items: center;
+      padding-left: 20px;
+      padding-right: 20px;
+      
+      .image-container {
+        width: 600px;
+        height: 600px;
+      }
+
+      .product-detail-actions {
+        font-size: 36px;
+      }
+    }
+
+    .product-detail-bottom {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 823px){
+    .product-detail-top {
+      //flex-direction: column;
+      align-items: center;
+
+      .image-container {
+        max-width: inherit;
+        max-height: inherit;
+      }
+
+      .product-detail-actions {
+        font-size: 36px;
+        //padding-left: 32px;
+      }
+    }
+
+    .product-detail-bottom {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 768px){
+    .product-detail-top {
+      //flex-direction: column;
+      align-items: center;
+
+      .image-container {
+        max-width: 300px;
+        max-height: 300px;
+      }
+
+      .product-detail-actions {
+        font-size: 36px;
+        //padding-left: 32px;
+      }
+    }
+
+    .product-detail-bottom {
+      font-size: 20px;
+    }
+  }
 }

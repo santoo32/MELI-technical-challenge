@@ -43,7 +43,7 @@ function findItems(query, callback) {
           null,
           {
             categories: filtered,
-            items:parsedResBody.results.map((item) => {
+            items:parsedResBody.results.slice(0, 4).map((item) => {
             return {...parseItem(item), address: item.address.state_name};
           })}
         );

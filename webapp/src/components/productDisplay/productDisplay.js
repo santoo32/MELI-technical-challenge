@@ -29,7 +29,11 @@ class ProductDisplay extends React.Component{
                     results.price.currency,
                     "es-AR"
                   )}
+                  <span className="item-price-decimals">
+                    {`${results.price.decimals !== 0 ? results.price.decimals : '00'} `}
+                  </span>
                 </span>
+                
                 <button className="buy-button" aria-label="Comprar">Comprar</button>
               </div>
             </div>
