@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import SearchResults from "../searchResults/searchResults";
+import React, { useState } from "react";
 import NavBar from "../../components/navBar/navBar";
 import './searchView.scss'
 import queryString from "query-string";
@@ -7,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router";
 
 
-const SearchView = ({itemsListUpdater}) => {
+const SearchView = () => {
   const { search } = useLocation();
   const [input, setInput] = useState(queryString.parse(search).search ? queryString.parse(search).search: "");
   const history = useHistory();

@@ -3,7 +3,6 @@ import "./searchResults.scss";
 import queryString from "query-string";
 import { useLocation } from "react-router-dom";
 import { getItems } from "../../services/itemService";
-import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs";
 import ProductsDisplay from "../../components/productsDisplay/productsDisplay";
 import WithLoading from "../../components/loaderScreen/spinner"
 const ProductsDisplayWithLoading = WithLoading(ProductsDisplay);

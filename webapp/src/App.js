@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import "./App.scss";
 import Routes from "./routes";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import NavBar from "./components/navBar/navBar";
-import withSearchBox from "./components/searchBox/searchBox";
+import { BrowserRouter as Router } from "react-router-dom";
 import SearchView from "./views/searchView/searchView";
-const NavBarWithSearchBox = withSearchBox(NavBar, "Nunca dejes de buscar");
 
 class App extends Component {
   constructor(props) {

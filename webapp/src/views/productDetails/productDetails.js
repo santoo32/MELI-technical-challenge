@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { getItem } from "../../services/itemService";
 import "./productDetails.scss";
 import "../searchResults/searchResults.scss";
-import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs";
 import ProductDisplay from "../../components/productDisplay/productDisplay";
 import WithLoading from "../../components/loaderScreen/spinner"
 const ProductDisplayWithLoading = WithLoading(ProductDisplay);

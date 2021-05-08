@@ -13,7 +13,7 @@ class ProductDisplay extends React.Component{
         <section>
         <Breadcrumbs categories={results.category}></Breadcrumbs>
         <div className="product-detail-page">
-          <content>
+          <div>
             <div className="product-detail-top">
               {/* <div className="image-container"> */}
               <img className="image-container" alt={results.title} src={results.picture}></img>
@@ -43,7 +43,7 @@ class ProductDisplay extends React.Component{
                 <p>{results.description}</p>
               </div>
             </div>
-          </content>
+          </div>
         </div>
         </section> : null
     )}

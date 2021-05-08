@@ -9,14 +9,9 @@ import Breadcrumbs from "../breadcrumbs/breadcrumbs"
 //The main role of this component is just to render all of the items
 // that are passed into it via props.
 class ProductsDisplay extends React.Component{
-    // constructor(props) {
-    //     this.state = {
-            
-    //     }
-    // }
 
     render() {
-        const {results, categories, hasFinished} = this.props;
+        const {results, categories} = this.props;
         return (
           <section>
             <Breadcrumbs categories={categories}></Breadcrumbs>
