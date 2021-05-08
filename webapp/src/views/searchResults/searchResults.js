@@ -30,7 +30,6 @@ const SearchResults = () => {
     <>
       <section>
         <ProductsDisplayWithLoading results={results} categories={categories} hasFinished={hasFinished}>
-
         </ProductsDisplayWithLoading>
       </section>
     </>

@@ -61,7 +61,7 @@ class ProductsDisplay extends React.Component{
                   </div>
               </Link>
             );
-          }) : hasFinished ? <NoResults></NoResults> : null}
+          }) : <NoResults></NoResults>}
         </div> 
         </section>
         )
