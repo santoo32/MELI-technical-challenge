@@ -4,11 +4,13 @@
   display: flex;
   font-size: 14px;
   color: $gray-500;
-  text-overflow: ellipsis;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   padding-right: 20px;
 
   ul.breadcrumb {
+    //display: inline;
     list-style: none;
     background-color: #eee;
   }
