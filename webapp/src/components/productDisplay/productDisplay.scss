@@ -82,12 +82,14 @@
     padding-bottom: 32px;
     padding-top: 32px;
     font-size: 28px;
+    word-wrap: break-word;
+    
 
     p {
       margin: 0px;
     }
 
-    .product-description * {
+    .product-description {
       padding-top: 32px;
       font-size: 16px;
       color: $gray-500;
