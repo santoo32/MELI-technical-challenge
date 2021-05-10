@@ -1,0 +1,27 @@
+.no-results-container {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .no-results-image {
+    width: 80px;
+    height: 80px;
+    margin-right: 35px;
+  }
+
+  .help-data {
+    align-items: left;
+    display: block;
+
+    .title {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .tips-list {
+      margin-top: 16px;
+    }
+  }
+}
