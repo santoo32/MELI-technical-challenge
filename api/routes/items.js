@@ -3,6 +3,8 @@ const router = express();
 const Response = require("../models/Response");
 const ItemsQ = require("../queries/items");
 
+//Here we can see what is commonly named 'Nested Callbacks' this can be easily replaced with promises to 
+// make the code more maintainable
 router.route("/:id").get(function (req, res) {
   let response = new Response();
   try {
